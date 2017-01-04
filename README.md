@@ -7,9 +7,8 @@ Switch WIFI 370 Controller on/off.
   
 Control color and brightness of your WIFI 370 Controller.
 
-### Which hardware is used in this project?
+### Which hardware is used?
 
-WIFI 370 LED CONTROLLER:
 ![Screenshot](https://dl.dropboxusercontent.com/u/13344648/dev/wifi370img.PNG)
 
 Amazon Link (Germany):<br>
