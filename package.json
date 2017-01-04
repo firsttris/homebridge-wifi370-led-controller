@@ -1,7 +1,7 @@
 {
   "name": "homebridge-wifi370-led-controller",
   "version": "1.0.0",
-  "description": "homebridge plugin for wifi370 led controller",
+  "description": "WIFI370 Led Controller plugin for homebridge: https://github.com/nfarina/homebridge",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
