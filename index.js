@@ -21,20 +21,12 @@ function wifi370Accessory (log, config) {
     uuid = UUIDGen.generate(this.name);
 }
 
-wifi370Accessory.prototype.identify = function (callback) {
-    this.log("identify");
-}
-
 wifi370Accessory.prototype.getServices = function () {
-    this.log("getServices")
-
     let lightService = new Service.Lightbulb(this.name);
 
     lightService
         .getCharacteristic(Characteristic.On)
         .on('set', (value, callback) => {
-            console.log('Set ON ' + value);
-
             if (value) {
                 ledController.setOn();
             } else {

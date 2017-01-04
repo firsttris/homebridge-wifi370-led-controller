@@ -1,5 +1,5 @@
 const net = require('net');
-let host = "20.1.0.142";
+let host = "";
 let port = 5577 * 1;
 let color = require('color');
 let selectedColor = color.rgb(255, 255, 255);
@@ -22,19 +22,18 @@ function send (array, callback) {
     client.connect(port, host, () => {
         const buffer = new Buffer(array);
         client.write(buffer);
-        if(!callback) {
+        if (!callback) {
             client.end();
         }
     });
     client.on('error', (err) => {
-        console.log('error : ' + err);
+        console.log('led-controller: '+host+' error: ' + err);
     });
     client.on('data', (data) => {
         callback(data.toString('hex'));
         client.end();
     });
     client.on('end', () => {
-        console.log("end");
     });
 }
 
@@ -43,7 +42,7 @@ function extractColorFromResponse (response) {
     const r = response[6];
     const g = response[7];
     const b = response[8];
-    selectedColor = color("#"+r+g+b);
+    selectedColor = color("#" + r + g + b);
 }
 
 function extractPowerStateFromResponse (response) {
@@ -75,16 +74,12 @@ function setColor (colorArray) {
 function setBrightness (value) {
     selectedColor = selectedColor.value(value);
     const rgbArray = selectedColor.rgb().round().array();
-    console.log('Brightness Value ' + value);
-    console.log('Brightness Color ' + rgbArray);
     setColor(rgbArray);
 }
 
 function getBrightness (callback) {
     send(INFO, (response) => {
-        console.log("Brightness Response: "+response);
         extractColorFromResponse(response);
-        console.log("GET Brightness Color" +selectedColor.rgb().round().array())
         callback(null, selectedColor.value());
     })
 }
@@ -92,8 +87,6 @@ function getBrightness (callback) {
 function setHue (value) {
     selectedColor = selectedColor.hue(value);
     const rgbArray = selectedColor.rgb().round().array();
-    console.log('Hue Value ' + value);
-    console.log('Hue Color ' + rgbArray);
     setColor(rgbArray);
 }
 
@@ -107,8 +100,6 @@ function getHue (callback) {
 function setSaturation (value) {
     selectedColor = selectedColor.saturationv(value)
     const rgbArray = selectedColor.rgb().round().array();
-    console.log('Saturation Value ' + value);
-    console.log('Saturation Color ' + rgbArray);
     setColor(rgbArray);
 }
 
