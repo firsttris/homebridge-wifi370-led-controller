@@ -8,7 +8,6 @@ const INFO = ["239", "1", "119"];
 const ON = ["204", "35", "51"];
 const OFF = ["204", "36", "51"];
 let powerState = false;
-let queue = [];
 
 function setHost (value) {
     host = value;
@@ -18,68 +17,38 @@ function setPort (value) {
     port = value;
 }
 
-function send (command, callback) {
-    queue.push({command: command, callback: callback});
-    if(queue.length == 1) {
-        execute();
-    }
-}
-
-function execute () {
-    if(queue.length == 0) {
-        return;
-    }
-    let queueItem = queue[0];
+function send (array, callback) {
     const client = new net.Socket();
+    client.connect(port, host, () => {
+        const buffer = new Buffer(array);
+        client.write(buffer);
+        if(!callback) {
+            client.end();
+        }
+    });
     client.on('error', (err) => {
         console.log('error : ' + err);
     });
     client.on('data', (data) => {
-        if(queue.length == 0) {
-            return;
-        }
-        let queueItem = queue.shift();
-        if (queueItem.callback) {
-            queueItem.callback(data.toString('hex'));
-        }
+        callback(data.toString('hex'));
         client.end();
-        execute();
     });
-    client.connect(port, host, () => {
-        // 'connect' listenerc
-        console.log('connected to server!');
-        const buffer = new Buffer(queueItem.command);
-        client.write(buffer);
-        if(!queueItem.callback) {
-            queue.shift();
-            client.end();
-            execute();
-        }
+    client.on('end', () => {
+        console.log("end");
     });
-
 }
 
 function extractColorFromResponse (response) {
     response = response.match(/.{1,2}/g);
-    console.log("responseArray:" + response);
-
     const r = response[6];
     const g = response[7];
     const b = response[8];
-    console.log("extracted Color: #"+r+g+b);
     selectedColor = color("#"+r+g+b);
-    console.log("color after conv: "+selectedColor.rgb().round().array())
 }
 
 function extractPowerStateFromResponse (response) {
     response = response.match(/.{1,2}/g);
-    console.log("responseArray:" + response);
-    if (response[2] == "24") {
-        powerState = false;
-    }
-    if (response[2] == "23") {
-        powerState = true;
-    }
+    powerState = response[2] == "23"
 }
 
 function setOn () {
