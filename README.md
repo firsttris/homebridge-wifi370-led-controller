@@ -13,7 +13,7 @@ WIFI 370 LED CONTROLLER:
 ![Screenshot](https://dl.dropboxusercontent.com/u/13344648/dev/wifi370img.PNG)
 
 Amazon Link (Germany):<br>
-http://www.amazon.de/dp/B00G55329A/ref=cm_sw_r_tw_dp_64xWub0KG32KV
+https://www.amazon.de/dp/B00Q6FKPZI/ref=cm_sw_r_tw_dp_x_HavByb4T01Q88
 
 
 # Installation
