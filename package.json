@@ -1,0 +1,24 @@
+{
+  "name": "homebridge-wifi370-led-controller",
+  "version": "1.0.0",
+  "description": "homebridge plugin for wifi370 led controller",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "wifi370",
+    "led",
+    "controller"
+  ],
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "author": "tristan teufel",
+  "license": "ISC",
+  "dependencies": {
+    "color": "^1.0.3"
+  }
+}

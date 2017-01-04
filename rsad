@@ -1,0 +1,13 @@
+        const response = chunk.match(/.{1,2}/g);
+        console.log("response:" +response);
+        const powerState = response[2];
+        let rgb = [];
+        rgb.push(response[7]);
+        rgb.push(response[8]);
+        rgb.push(response[9]);
+        selectedColor = color.rgb(rgb);
+        if(callback) {
+            callback(null, selectedColor.value());
+        }
+
+
