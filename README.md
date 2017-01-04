@@ -1,7 +1,7 @@
 # homebridge-hyperion
-[Homebridge](https://github.com/nfarina/homebridge) accessory plugin for Hyperion
+[Homebridge](https://github.com/nfarina/homebridge) accessory plugin for WIFI 370 Led Controller
 
-Homebridge Plugin to use WIFI 370 Controller as HomeKit device.
+Homebridge Plugin to use WIFI 370 Led Controller as HomeKit device.
 
 Switch WIFI 370 Controller on/off.
   
