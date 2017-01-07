@@ -12,14 +12,24 @@ Control color and brightness of your WIFI 370 Controller.
 ![Screenshot](https://dl.dropboxusercontent.com/u/13344648/dev/wifi370img.PNG)
 
 Amazon Link (Germany):<br>
-https://www.amazon.de/dp/B00Q6FKPZI/ref=cm_sw_r_tw_dp_x_HavByb4T01Q88
 
+Link to German Amazon: [Link](https://www.amazon.de/dp/B00Q6FKPZI/ref=cm_sw_r_tw_dp_x_HavByb4T01Q88)
 
 # Installation
 
-1. Install homebridge using: npm install -g homebridge
-2. Install this plugin using: npm install -g homebridge-wifi370-led-controller
-3. Add Accessory (JSON) to your config.json See below for a sample.
+1. [Homebridge](https://github.com/nfarina/homebridge) is required to use this plugin 
+
+[![npm version](https://badge.fury.io/js/homebridge.svg)](https://badge.fury.io/js/homebridge)
+```
+npm install -g homebridge
+```
+2. Install this plugin 
+
+[![npm version](https://badge.fury.io/js/homebridge-wifi370-led-controller.svg)](https://badge.fury.io/js/homebridge-wifi370-led-controller)
+```
+npm install -g homebridge-wifi370-led-controller
+```
+3. Add your Accessory to the config.json (See configuration sample below.)
 
 # Configuration
 
