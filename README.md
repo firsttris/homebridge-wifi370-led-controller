@@ -1,5 +1,5 @@
 # homebridge-wifi370-led-controller
-[Homebridge](https://github.com/nfarina/homebridge) accessory plugin for WIFI 370 Led Controller
+[Homebridge](https://github.com/nfarina/homebridge) accessory for WIFI 370 Led Controller
 
 Homebridge Plugin to use WIFI 370 Led Controller as HomeKit device.
 
