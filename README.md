@@ -3,33 +3,27 @@
 
 Homebridge Plugin to use WIFI 370 Led Controller as HomeKit device.
 
-Switch WIFI 370 Controller on/off.
+Features:
+
+- Switch WIFI 370 Controller on/off.
   
-Control color and brightness of your WIFI 370 Controller.
-
-### Which hardware is used?
-
-![Screenshot](https://dl.dropboxusercontent.com/u/13344648/dev/wifi370img.PNG)
-
-Amazon Link (Germany):<br>
-
-Link to German Amazon: [Link](https://www.amazon.de/dp/B00Q6FKPZI/ref=cm_sw_r_tw_dp_x_HavByb4T01Q88)
+- Control color and brightness of your WIFI 370 Controller.
 
 # Installation
 
-1. [Homebridge](https://github.com/nfarina/homebridge) is required to use this plugin 
+[Homebridge](https://github.com/nfarina/homebridge) is required to use this plugin 
 
 [![npm version](https://badge.fury.io/js/homebridge.svg)](https://badge.fury.io/js/homebridge)
 ```
 npm install -g homebridge
 ```
-2. Install this plugin 
+Install this plugin 
 
 [![npm version](https://badge.fury.io/js/homebridge-wifi370-led-controller.svg)](https://badge.fury.io/js/homebridge-wifi370-led-controller)
 ```
 npm install -g homebridge-wifi370-led-controller
 ```
-3. Add your Accessory to the config.json (See configuration sample below.)
+Add your Accessory to the config.json (See configuration sample below.)
 
 # Configuration
 
@@ -46,7 +40,13 @@ Configuration sample:
 
 Fields:
 
-* "accessory": Name of Accessory "wifi370" (required)
-* "name": Name of LED Controller (required)
-* "host": The hostname or ip (required)
-* "port": The port (usually 5577) (required)
+- "accessory": Name of Accessory "wifi370" (required)
+- "name": Name of LED Controller (required)
+- "host": The hostname or ip (required)
+- "port": The port (usually 5577) (required)
+
+### Which hardware is used?
+
+![Screenshot](https://dl.dropboxusercontent.com/u/13344648/dev/wifi370img.PNG)
+
+Link to Amazon (Germany): [Link](https://www.amazon.de/dp/B00Q6FKPZI/ref=cm_sw_r_tw_dp_x_HavByb4T01Q88)
