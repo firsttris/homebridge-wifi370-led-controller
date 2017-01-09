@@ -1,7 +1,7 @@
 /**
  * Created by Tristan on 30.12.2016.
  */
-let WIFI370 = require('wifi370-js-api');
+const WIFI370 = require('wifi370-js-api');
 let Service, Characteristic, UUIDGen;
 
 module.exports = function (homebridge) {
@@ -14,7 +14,7 @@ module.exports = function (homebridge) {
 
 function Wifi370Accessory (log, config) {
     this.log = log;
-    this.ledController = new WIFI370(config["host"], config["port"]);
+    this.ledController = new WIFI370(config["host"], 5577);
     this.name = config["name"];
     this.log("Starting wifi370 Accessory");
     this.lightService = new Service.Lightbulb(this.name);
@@ -74,4 +74,4 @@ Wifi370Accessory.prototype.getServices = function () {
     services.push(this.infoService);
 
     return services;
-}
+};
