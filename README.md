@@ -11,7 +11,7 @@ Homebridge Plugin to use WIFI 370 Led Controller as HomeKit device.
 
 - Get current state
 
-#### Installation
+###Installation
 
 [Homebridge](https://github.com/nfarina/homebridge) is required to use this plugin 
 
