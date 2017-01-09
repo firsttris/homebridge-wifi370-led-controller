@@ -1,7 +1,7 @@
 /**
  * Created by Tristan on 30.12.2016.
  */
-let ledController = require('./ledController.js');
+let WIFI370 = require('wifi370-js-api');
 let Service, Characteristic, UUIDGen;
 
 module.exports = function (homebridge) {
@@ -9,74 +9,69 @@ module.exports = function (homebridge) {
     Characteristic = homebridge.hap.Characteristic;
     Accessory = homebridge.hap.Accessory;
     UUIDGen = homebridge.hap.uuid;
-    homebridge.registerAccessory("homebridge-wifi370", "wifi370", wifi370Accessory);
+    homebridge.registerAccessory("homebridge-wifi370", "wifi370", Wifi370Accessory);
 }
 
-function wifi370Accessory (log, config) {
+function Wifi370Accessory (log, config) {
     this.log = log;
-    ledController.setHost(config["host"]);
-    ledController.setPort(config["port"]);
+    this.ledController = new WIFI370(config["host"], config["port"]);
     this.name = config["name"];
     this.log("Starting wifi370 Accessory");
-    uuid = UUIDGen.generate(this.name);
+    this.lightService = new Service.Lightbulb(this.name);
+    this.infoService = new Service.AccessoryInformation();
+    this.uuid = UUIDGen.generate(this.name);
 }
 
-wifi370Accessory.prototype.getServices = function () {
-    let lightService = new Service.Lightbulb(this.name);
+Wifi370Accessory.prototype.getServices = function () {
 
-    lightService
+    this.lightService
         .getCharacteristic(Characteristic.On)
         .on('set', (value, callback) => {
             if (value) {
-                ledController.setOn();
+                this.ledController.setOn(callback);
             } else {
-                ledController.setOff();
+                this.ledController.setOff(callback);
             }
-            callback();
         })
         .on('get', (callback) => {
-            ledController.getOn(callback);
+            this.ledController.getOn(callback);
         });
 
-    lightService
+    this.lightService
         .addCharacteristic(Characteristic.Brightness)
         .on('set', (value, callback) => {
-            ledController.setBrightness(value);
-            callback();
+            this.ledController.setBrightness(value, callback);
         })
         .on('get', (callback) => {
-            ledController.getBrightness(callback);
+            this.ledController.getBrightness(callback);
         });
 
-    lightService
+    this.lightService
         .addCharacteristic(Characteristic.Hue)
         .on('set', (value, callback) => {
-            ledController.setHue(value);
-            callback();
+            this.ledController.setHue(value, callback);
         })
         .on('get', (callback) => {
-            ledController.getHue(callback);
+            this.ledController.getHue(callback);
         });
 
-    lightService
+    this.lightService
         .addCharacteristic(Characteristic.Saturation)
         .on('set', (value, callback) => {
-            ledController.setSaturation(value);
-            callback();
+            this.ledController.setSaturation(value, callback);
         })
         .on('get', (callback) => {
-            ledController.getSaturation(callback);
+            this.ledController.getSaturation(callback);
         });
 
-    let infoService = new Service.AccessoryInformation();
-    infoService
+    this.infoService
         .setCharacteristic(Characteristic.Manufacturer, "wifi370")
         .setCharacteristic(Characteristic.Model, this.host)
-        .setCharacteristic(Characteristic.SerialNumber, lightService.UUID);
+        .setCharacteristic(Characteristic.SerialNumber, this.lightService.UUID);
 
     let services = [];
-    services.push(lightService);
-    services.push(infoService);
+    services.push(this.lightService);
+    services.push(this.infoService);
 
     return services;
 }

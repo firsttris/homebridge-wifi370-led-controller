@@ -3,13 +3,15 @@
 
 Homebridge Plugin to use WIFI 370 Led Controller as HomeKit device.
 
-Features:
+###Features
 
 - Switch WIFI 370 Controller on/off.
   
 - Control color and brightness of your WIFI 370 Controller.
 
-# Installation
+- Get current state
+
+#### Installation
 
 [Homebridge](https://github.com/nfarina/homebridge) is required to use this plugin 
 
@@ -25,7 +27,7 @@ npm install -g homebridge-wifi370-led-controller
 ```
 Add your Accessory to the config.json (See configuration sample below.)
 
-# Configuration
+#### Configuration
 
 Configuration sample:
 
@@ -38,7 +40,7 @@ Configuration sample:
                         }]
 ```
 
-Fields:
+Attributes:
 
 - "accessory": Name of Accessory "wifi370" (required)
 - "name": Name of LED Controller (required)
