@@ -21,7 +21,6 @@ npm install -g homebridge
 to use this plugin
 
 [![npm version](https://badge.fury.io/js/homebridge-wifi370-led-controller.svg)](https://badge.fury.io/js/homebridge-wifi370-led-controller)
-[![Dependency Status](https://david-dm.org/firsttris/homebridge-wifi370-led-controller.svg)](https://david-dm.org/firsttris/homebridge-wifi370-led-controller) 
 
 ```
 npm install -g homebridge-wifi370-led-controller
