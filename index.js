@@ -15,19 +15,33 @@ function Wifi370Accessory (log, config) {
     this.autoUpdate = config["autoupdate"]!=null;
     this.host = config["host"];
     this.name = config["name"];
-    new NpmAutoUpdate().checkForUpdate(this.autoUpdate, this.log, (error, result) => {
-    });
+    this.npmAutoUpdate = new NpmAutoUpdate(console);
+    this.updatePackage();
+    this.verifyConfig();
+    this.ledController = new WIFI370(this.host, 5577);
+    this.lightService = new Service.Lightbulb(this.name);
+    this.infoService = new Service.AccessoryInformation();
+    this.uuid = UUIDGen.generate(this.name);
+    this.log("Starting wifi370 Accessory "+this.name);
+}
+
+Wifi370Accessory.prototype.updatePackage = function () {
+    if(this.autoUpdate) {
+        this.npmAutoUpdate.checkForUpdate((error, result) => {
+            if(result) {
+                this.npmAutoUpdate.updatePackage((error, result) => {
+                });
+            }
+        });
+    }
+};
+
+Wifi370Accessory.prototype.verifyConfig = function () {
     if(!this.host || !this.name) {
         console.error("Please define name and host in config.json");
         this.name = "Undefined";
     }
-    this.ledController = new WIFI370(this.host, 5577);
-
-    this.log("Starting wifi370 Accessory");
-    this.lightService = new Service.Lightbulb(this.name);
-    this.infoService = new Service.AccessoryInformation();
-    this.uuid = UUIDGen.generate(this.name);
-}
+};
 
 Wifi370Accessory.prototype.getServices = function () {
 
