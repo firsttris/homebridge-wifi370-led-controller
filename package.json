@@ -1,6 +1,6 @@
 {
   "name": "homebridge-wifi370-led-controller",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "WIFI370 LED-Controller plugin for homebridge: https://github.com/nfarina/homebridge",
   "main": "index.js",
   "repository": {
@@ -20,6 +20,6 @@
   "author": "tristan teufel",
   "license": "ISC",
   "dependencies": {
-    "wifi370-js-api": "^1.0.3"
+    "wifi370-js-api": "^1.0.4"
   }
 }
