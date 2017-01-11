@@ -1,6 +1,6 @@
 "use strict";
 const WIFI370 = require('wifi370-js-api');
-const VersionCheck = require('./versionCheck');
+const NpmAutoUpdate = require('npm-auto-update');
 let Service, Characteristic, UUIDGen;
 
 module.exports = function (homebridge) {
@@ -12,12 +12,11 @@ module.exports = function (homebridge) {
 
 function Wifi370Accessory (log, config) {
     this.log = log;
-    this.autoUpdate = config["autoupdate"];
+    this.autoUpdate = config["autoupdate"]!=null;
     this.host = config["host"];
     this.name = config["name"];
-    if(this.autoUpdate) {
-        VersionCheck.checkForUpdate("homebridge-wifi370-led-controller", this.autoUpdate, this.log);
-    }
+    new NpmAutoUpdate().checkForUpdate(this.autoUpdate, this.log, (error, result) => {
+    });
     if(!this.host || !this.name) {
         console.error("Please define name and host in config.json");
         this.name = "Undefined";
