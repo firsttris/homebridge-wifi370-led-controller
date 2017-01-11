@@ -44,7 +44,7 @@ Configuration sample:
 Attributes:
 
 - "accessory": Name of Accessory "wifi370" (required)
-- "autoupdate": Autoupdate this package from NPM
+- "autoupdate": Autoupdate this package from NPM (only for one device!)
 - "name": Name of LED Controller (required)
 - "host": The hostname or ip (required)
 
