@@ -11,11 +11,12 @@ module.exports = function (homebridge) {
 };
 
 function Wifi370Accessory (log, config) {
+    this.log = log;
     this.autoUpdate = config["autoupdate"]!=null;
     this.host = config["host"];
     this.name = config["name"];
     this.npmAutoUpdate = new NpmAutoUpdate(log);
-    this.updatePackage();
+    if(this.autoUpdate) this.updatePackage();
     this.verifyConfig();
     this.ledController = new WIFI370(this.host, 5577);
     this.lightService = new Service.Lightbulb(this.name);
@@ -24,20 +25,17 @@ function Wifi370Accessory (log, config) {
 }
 
 Wifi370Accessory.prototype.updatePackage = function () {
-    if(this.autoUpdate) {
         this.npmAutoUpdate.checkForUpdate((error, result) => {
             if(result) {
                 this.npmAutoUpdate.updatePackage((error, result) => {
                 });
             }
         });
-    }
 };
 
 Wifi370Accessory.prototype.verifyConfig = function () {
     if(!this.host || !this.name) {
-        console.error("Please define name and host in config.json");
-        this.name = "Undefined";
+        this.log.error("Please define name and host in config.json");
     }
 };
 

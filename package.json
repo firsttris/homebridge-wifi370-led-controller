@@ -20,7 +20,7 @@
   "author": "tristan teufel",
   "license": "ISC",
   "dependencies": {
-    "npm-auto-update": "^1.0.9",
+    "npm-auto-update": "^1.1.3",
     "wifi370-js-api": "^1.0.4"
   }
 }
