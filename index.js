@@ -1,6 +1,4 @@
-/**
- * Created by Tristan on 30.12.2016.
- */
+"use strict";
 const WIFI370 = require('wifi370-js-api');
 let Service, Characteristic, UUIDGen;
 
