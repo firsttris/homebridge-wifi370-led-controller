@@ -35,6 +35,7 @@ Configuration sample:
  ```
         "accessories": [{
                   "accessory": "wifi370",
+                  "autoupdate": "true",
                   "name": "LED Controller Name",
                   "host": "20.1.0.142"
                         }]
@@ -43,6 +44,7 @@ Configuration sample:
 Attributes:
 
 - "accessory": Name of Accessory "wifi370" (required)
+- "autoupdate": Autoupdate this package from NPM
 - "name": Name of LED Controller (required)
 - "host": The hostname or ip (required)
 

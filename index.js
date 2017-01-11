@@ -1,18 +1,29 @@
 "use strict";
 const WIFI370 = require('wifi370-js-api');
+const VersionCheck = require('./versionCheck');
 let Service, Characteristic, UUIDGen;
 
 module.exports = function (homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
     UUIDGen = homebridge.hap.uuid;
-    homebridge.registerAccessory("homebridge-wifi370", "wifi370", Wifi370Accessory);
-}
+    homebridge.registerAccessory("homebridge-wifi370-led-controller", "wifi370", Wifi370Accessory);
+};
 
 function Wifi370Accessory (log, config) {
     this.log = log;
-    this.ledController = new WIFI370(config["host"], 5577);
+    this.autoUpdate = config["autoupdate"];
+    this.host = config["host"];
     this.name = config["name"];
+    if(this.autoUpdate) {
+        VersionCheck.checkForUpdate("homebridge-wifi370-led-controller", this.autoUpdate, this.log);
+    }
+    if(!this.host || !this.name) {
+        console.error("Please define name and host in config.json");
+        this.name = "Undefined";
+    }
+    this.ledController = new WIFI370(this.host, 5577);
+
     this.log("Starting wifi370 Accessory");
     this.lightService = new Service.Lightbulb(this.name);
     this.infoService = new Service.AccessoryInformation();
