@@ -5,7 +5,6 @@ let Service, Characteristic, UUIDGen;
 module.exports = function (homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
-    Accessory = homebridge.hap.Accessory;
     UUIDGen = homebridge.hap.uuid;
     homebridge.registerAccessory("homebridge-wifi370", "wifi370", Wifi370Accessory);
 }
