@@ -18,7 +18,7 @@ function Wifi370Accessory (log, config) {
     this.npmAutoUpdate = new NpmAutoUpdate(log);
     if(this.autoUpdate) this.updatePackage();
     this.verifyConfig();
-    this.ledController = new WIFI370(config["controller"], this.host, 5577);
+    this.ledController = WIFI370(config["controller"], this.host, 5577);
     this.lightService = new Service.Lightbulb(this.name);
     this.infoService = new Service.AccessoryInformation();
     this.uuid = UUIDGen.generate(this.name);
