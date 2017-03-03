@@ -35,6 +35,7 @@ Configuration sample:
  ```
         "accessories": [{
                   "accessory": "wifi370",
+                  "controller": "LW12",
                   "autoupdate": "true",
                   "name": "LED Controller Name",
                   "host": "20.1.0.142"
@@ -49,6 +50,18 @@ Attributes:
 - "host": The hostname or ip (required)
 
 ### Which hardware is used?
+
+#### Controller Support
+|Controller  | Supported     | Type  |
+| ---------- |:-------------:| -----:|
+| LW12       | [x]           | RGB   |
+| LD382      | [x]           | RGB   |
+| LD382A     | [x]           | RGB   |
+| LD686      | [x]           | RGBW  |
+
+Thanks to Meik Dirkes for reverse engineering the communication for all controller types.
+
+####WIFI370-LED Controller
 
 ![Screenshot](https://dl.dropboxusercontent.com/u/13344648/dev/wifi370img.PNG)
 

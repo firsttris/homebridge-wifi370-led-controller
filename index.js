@@ -12,13 +12,13 @@ module.exports = function (homebridge) {
 
 function Wifi370Accessory (log, config) {
     this.log = log;
-    this.autoUpdate = config["autoupdate"]!=null;
+    this.autoUpdate = config["autoupdate"]!==null;
     this.host = config["host"];
     this.name = config["name"];
     this.npmAutoUpdate = new NpmAutoUpdate(log);
     if(this.autoUpdate) this.updatePackage();
     this.verifyConfig();
-    this.ledController = new WIFI370(this.host, 5577);
+    this.ledController = new WIFI370(config["controller"], this.host, 5577);
     this.lightService = new Service.Lightbulb(this.name);
     this.infoService = new Service.AccessoryInformation();
     this.uuid = UUIDGen.generate(this.name);
