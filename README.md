@@ -2,13 +2,13 @@
 
 :bulb: [Homebridge](https://github.com/nfarina/homebridge) plugin to use WIFI370 Led-Controller as HomeKit accessory
 
-### Features
+## Features
 
 - Switch on/off
 - Control color and brightness
 - Get current state/color
 
-### Installation
+## Install
 
 [Homebridge](https://github.com/nfarina/homebridge) is required
 
@@ -28,7 +28,7 @@ npm install -g homebridge-wifi370-led-controller
 
 Add your Accessory to the config.json
 
-#### Configuration
+### Configuration
 
 Configuration sample:
 
@@ -66,3 +66,6 @@ Thanks to Meik Dirkes for reverse engineering the communication for all controll
 ![Screenshot](https://github.com/firsttris/homebridge-wifi370-led-controller/blob/master/wiki/wifi370img.PNG)
 
 Link to Amazon (Germany): [Link](https://www.amazon.de/dp/B00Q6FKPZI/ref=cm_sw_r_tw_dp_x_HavByb4T01Q88)
+
+## License
+[MIT](http://opensource.org/licenses/MIT)
