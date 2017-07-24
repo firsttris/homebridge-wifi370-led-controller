@@ -67,6 +67,8 @@ Thanks to Meik Dirkes for reverse engineering the communication for all controll
 
 Link to Amazon (Germany): [Link](https://www.amazon.de/dp/B00Q6FKPZI/ref=cm_sw_r_tw_dp_x_HavByb4T01Q88)
 
+## Donate
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KEAR9ZC228YCL)
 
 ## License
 See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
